@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>  
+    <link href="img_icon.png" rel="icon">
+    <link rel="stylesheet" href="termoio.css"></link>
+</head>
+<body>
+    <div class="menu">
+        <img src="logo_termoio.jpeg">
+        <button>HOME</button>
+        <button>SOBRE</button>
+        <button>PRODUTOS</button>
+        <button>CONTATOS</button>
+        <button><img class="but_img" src="img_icon.png"></button>
+    </div>
+        
+    <div class="slideshow-container">
+
+       
+        <div class="mySlides">
+          <img src="teste_img.jfif" style="width:100%">
+          </div>
+       
+        
+       
+          <div class="mySlides">
+          <img src="teste_img2.jpg" style="width:100%">
+          </div>
+          
+        
+        
+        
+          <div class="mySlides">
+          <img src="teste_img3.png" style="width:100%">
+          </div>
+          
+          <div style="text-align:center">
+            <span class="carousel_word">ANTERIOR</span>
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="carousel_word">PRÓXIMO</span>
+          </div>
+        
+        </div>
+</body>
+</html>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
