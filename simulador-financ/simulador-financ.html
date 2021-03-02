@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    Insira o nome da empresa: <input id="id_empresa"><br>
+    Quanto é o salário do funcionário? <input id="id_salario"><br>
+    Quantos dias ele fica afastado? <input id="id_dias_afastados"><br>
+    <button onclick="calcular()">Verificar quanto é perdido</button>
+    <div id="resultado">
+
+    </div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+        var empresa = (id_empresa.value);
+        var salario = Number(id_salario.value);
+        var dias = Number(id_dias_afastados.value);
+        var calculoDiasSalario = dias / salario;
+        //var total = calculoDiasSalario;
+
+        resultado.innerHTML = `<span>Para cada dia de afastamento por funcionario, a empresa ${empresa} perde
+                                R$ ${calculoDiasSalario} em capital.</span>`;
+
+    }
+</script>
