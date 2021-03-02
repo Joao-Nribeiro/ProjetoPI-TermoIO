@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    Insira o nome da sua empresa:<br>
+    <input id="nome_empresa"><br><br>
+    
+    Insira o salário do funcionário:<br>
+    <input id="quant_salario"><br><br>
+    
+    Insira quantos dias ele fica afastado:<br>
+    <input id="quant_dias"><br><br>
+    
+    <button onclick="multiplicacao()">Calcular!</button>
+    <br><br>
+    <div id="frase_final"></div>
+ 
+</body>
+</html>
+<script>
+    function multiplicacao(){
+        var salario = Number(quant_salario.value);
+        var salariodia = salario/30;
+        var dinheiroperdido = salariodia*Number(quant_dias.value);
+
+        frase_final.innerHTML= 'Quando um funcionário fica afastado por <b>'+quant_dias.value+
+        '</b> dias a empresa <b>'+nome_empresa.value+'</b> perde R$<b>'+dinheiroperdido+'</b>!'
+    
+    
+    }
+</script>
