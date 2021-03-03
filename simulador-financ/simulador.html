@@ -7,19 +7,21 @@
     <title>Simulador Financeiro</title>
 </head>
 <body>
-    Insira o nome da sua empresa:<br>
-    <input id="nome_empresa"><br><br>
+    <div style="background-color: #E1550E; height: 4px;width: 605px;"></div><br>
+    <div style="margin-left: 215px;"> Insira o nome da sua empresa:<br>
+        <input id="nome_empresa"><br><br>
     
-    Insira o salário do funcionário:<br>
-    <input id="quant_salario"><br><br>
+        Insira o salário do funcionário:<br>
+        <input id="quant_salario"><br><br>
     
-    Insira quantos dias ele fica afastado:<br>
-    <input id="quant_dias"><br><br>
+        Insira quantos dias o funcionário<br><span style="margin-left: 50px;"> fica afastado:</span><br>
+        <input id="quant_dias"><br><br>
     
-    <button onclick="multiplicacao()">Calcular!</button>
-    <br><br>
-    <div id="frase_final"></div>
- 
+        <button onclick="multiplicacao()" style="margin-left: 50px;" >Calcular!</button>
+    <br><br></div> 
+    <div id="design" style="background-color: #E1550E; height: 4px;width: 0px;"></div>
+    <br><div id="frase_final" style=" font-size: large;" ></div>
+    
 </body>
 </html>
 <script>
@@ -30,8 +32,8 @@
         var resultado = dinheiroperdido.toFixed(2)
         
         frase_final.innerHTML= 'Quando um funcionário fica afastado por <b>'+quant_dias.value+
-        '</b> dias a empresa <b>'+nome_empresa.value+'</b> perde R$<b>'+resultado+'</b>!'
-    
-    
+        '</b> dias, a empresa <b>'+nome_empresa.value+'</b> perde R$<b>'+resultado+'</b>!'
+            
+        design.style.width = '605px'
     }
 </script>
