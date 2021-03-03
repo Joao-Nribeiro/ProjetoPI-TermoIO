@@ -27,9 +27,10 @@
         var salario = Number(quant_salario.value);
         var salariodia = salario/30;
         var dinheiroperdido = salariodia*Number(quant_dias.value);
-
+        var resultado = dinheiroperdido.toFixed(2)
+        
         frase_final.innerHTML= 'Quando um funcionário fica afastado por <b>'+quant_dias.value+
-        '</b> dias a empresa <b>'+nome_empresa.value+'</b> perde R$<b>'+dinheiroperdido+'</b>!'
+        '</b> dias a empresa <b>'+nome_empresa.value+'</b> perde R$<b>'+resultado+'</b>!'
     
     
     }
