@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Financeiro</title>
+    <title>Simulador Financeiro - TermoIO</title>
 </head>
-<body>
-    Insira o nome da empresa: <input id="id_empresa"><br>
-    Quanto é o salário do funcionário? <input id="id_salario"><br>
-    Quantos dias ele fica afastado? <input id="id_dias_afastados"><br>
-    <button onclick="calcular()">Verificar quanto é perdido</button>
-    <div id="resultado">
 
+<body>
+    <div>
+        Insira o nome da empresa: <input id="id_empresa"><br>
+        Quanto é o salário do funcionário? <input id="id_salario"><br>
+        Quantas horas por dia o funcionário trabalha? <input id="id_horas_dia"><br>
+        Quantas dias por mês ele trabalha? <input id="id_dias_mes"><br>
+        Quantos dias ele fica afastado? <input id="id_dias_afastados"><br>
+        <button onclick="calcular()">Analisar Perdas</button>
     </div>
+
+    <div id="resultado" class="resultado"></div>
+
+    <div style="background-color: rgb(253, 165, 0); width: 0; height: 30px;" id="id_bar"></div><br>    
+
 </body>
 </html>
 
@@ -21,12 +28,27 @@
     function calcular(){
         var empresa = (id_empresa.value);
         var salario = Number(id_salario.value);
-        var dias = Number(id_dias_afastados.value);
-        var calculoDiasSalario = dias / salario;
-        //var total = calculoDiasSalario;
+        var diasMes = Number(id_dias_mes.value);
 
-        resultado.innerHTML = `<span>Para cada dia de afastamento por funcionario, a empresa ${empresa} perde
-                                R$ ${calculoDiasSalario} em capital.</span>`;
+        var diasAfastados = Number(id_dias_afastados.value);
+        var diaHrsTrabalho = Number(id_horas_dia.value * diasAfastados);
+
+        var salarioHrs = (salario / diasMes) / diaHrsTrabalho;
+
+        var calculoPerdaCapital = diaHrsTrabalho * salarioHrs;
+
+    //segundo os dados do site: https://noticias.uol.com.br/saude/ultimas-noticias/redacao/2020/04/10/covid-19-1-doente-contagia-6-e-casos-podem-duplicar-em-3-dias-diz-estudo.htm
+        var mediaContagio = diasAfastados * 6;
+        
+        resultado.innerHTML = `<span>Em relação aos dias de afastamento do funcionario, a empresa ${empresa} perde
+                                R$ ${calculoPerdaCapital} em capital por dia.</span><br>
+                                
+                               <span>Para ${diasAfastados} dias que o funcionario trabalha, ele infecta ${mediaContagio} pessoas.</span>
+                               <br><br>
+                               <span>Gráfico de porcentagem de perda.</span><br><br>`;
+            
+                               resultado.innerHTML += `<b>Perda do Capital:</b>`;                      
+                               id_bar.style.width = `${calculoPerdaCapital / 100}%`;
 
     }
 </script>
