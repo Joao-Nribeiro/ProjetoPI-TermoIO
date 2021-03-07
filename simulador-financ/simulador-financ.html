@@ -7,48 +7,78 @@
     <title>Simulador Financeiro - TermoIO</title>
 </head>
 
-<body>
-    <div>
-        Insira o nome da empresa: <input id="id_empresa"><br>
-        Quanto é o salário do funcionário? <input id="id_salario"><br>
-        Quantas horas por dia o funcionário trabalha? <input id="id_horas_dia"><br>
-        Quantas dias por mês ele trabalha? <input id="id_dias_mes"><br>
-        Quantos dias ele fica afastado? <input id="id_dias_afastados"><br>
-        <button onclick="calcular()">Analisar Perdas</button>
+<body style="background-color: black;">
+    <center>
+        <img src="../site/logo_termoio.jpeg">
+
+    <div style="border: solid orange 2px; width: 500px; border-radius: 5px;">
+
+        <span style="color: white; font-size: 21px; font-family: Arial, Helvetica, sans-serif;">Insira o nome da empresa:</span> <input id="id_empresa" style="font-size: 20px; border-radius: 10px;"><br>
+        <span style="color: white; font-size: 20px;  font-family: Arial, Helvetica, sans-serif;">Quanto é o salário do funcionário?</span> <input id="id_salario" style="font-size: 20px; border-radius: 10px;"><br>
+        <span style="color: white; font-size: 20px;  font-family: Arial, Helvetica, sans-serif;">Quantas horas por dia o funcionário trabalha?</span> <input id="id_horas_dia" style="font-size: 20px; border-radius: 10px;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias por mês ele trabalha?</span> <input id="id_dias_mes" style="font-size: 20px; border-radius: 10px;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias ele fica afastado?</span> <input id="id_dias_afastados" style="font-size: 20px; border-radius: 10px;"><br>
+        
+        <button style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; border: none;  border-radius: 10px; background-color: rgb(255, 166, 0);" onclick="calcular()">Analisar Perdas</button><br><br>
+    
     </div>
 
-    <div id="resultado" class="resultado"></div>
-
-    <div style="background-color: rgb(253, 165, 0); width: 0; height: 30px;" id="id_bar"></div><br>    
-
+    <div id="resultado" style="width: 700px;"></div>
+        <div style="background-color: orange; width: 0; height: 30px;" id="id_bar_dia"></div><br> 
+    <div id="resultado2" style="width: 700px;"></div>
+        <div style="background-color: orange; width: 0; height: 30px;" id="id_bar_mes"></div><br>   
+    </center>
 </body>
 </html>
 
 <script>
     function calcular(){
+
+        //Nome da empresa
         var empresa = (id_empresa.value);
+
+        //Salário por mês
         var salario = Number(id_salario.value);
+
+        //Dias que o funcionário trabalha
         var diasMes = Number(id_dias_mes.value);
 
+        //Dias que o funcionário fica afastado
         var diasAfastados = Number(id_dias_afastados.value);
-        var diaHrsTrabalho = Number(id_horas_dia.value * diasAfastados);
+        
+        //Horas de trabalho por dia do funcionário
+        var diaHrsTrabalho = Number(id_horas_dia.value );
 
-        var salarioHrs = (salario / diasMes) / diaHrsTrabalho;
+        //Calculo de salário por horas
+        var salarioHrs = salario/diasMes;
 
-        var calculoPerdaCapital = diaHrsTrabalho * salarioHrs;
+        //Calculo de perda de capital
+        var calculoPerdaCapital = diaHrsTrabalho * salarioHrs; 
 
-    //segundo os dados do site: https://noticias.uol.com.br/saude/ultimas-noticias/redacao/2020/04/10/covid-19-1-doente-contagia-6-e-casos-podem-duplicar-em-3-dias-diz-estudo.htm
+        //Calculo de perda mês
+        var salarioMes = salarioHrs * diasAfastados;
+
+        //segundo os dados do site: https://noticias.uol.com.br/saude/ultimas-noticias/redacao/2020/04/10/covid-19-1-doente-contagia-6-e-casos-podem-duplicar-em-3-dias-diz-estudo.htm
         var mediaContagio = diasAfastados * 6;
         
-        resultado.innerHTML = `<span>Em relação aos dias de afastamento do funcionario, a empresa ${empresa} perde
-                                R$ ${calculoPerdaCapital} em capital por dia.</span><br>
-                                
-                               <span>Para ${diasAfastados} dias que o funcionario trabalha, ele infecta ${mediaContagio} pessoas.</span>
+        //Resultado apresentado na div
+        resultado.innerHTML = `<span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Em relação aos dias de afastamento do funcionario, a empresa <b style="color: orange">${empresa}</b> perde
+                               <b style="color: orange">R$ ${salarioHrs}</b> em capital por dia, ou <b style="color: orange"> R$ ${salarioMes}</b> por mês.</span><br><br>
+
+                               <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Estimativa de contagio referente ao COVID-19:<br>
+                                Para <b style="color: orange">${diasAfastados}</b> dias que o funcionario trabalha, ele infecta <b style="color: orange">${mediaContagio}</b> pessoas.</span>
+                               
                                <br><br>
-                               <span>Gráfico de porcentagem de perda.</span><br><br>`;
+                               <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Gráfico de porcentagem de perda:</span><br><br>`;
             
-                               resultado.innerHTML += `<b>Perda do Capital:</b>`;                      
-                               id_bar.style.width = `${calculoPerdaCapital / 100}%`;
+                               //Barras de percentual
+                               resultado.innerHTML += `<b style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Perda do Capital/Dia: <b style="color: orange">${calculoPerdaCapital / 100}%</b> </b><br>`;                      
+                               id_bar_dia.style.width = `${calculoPerdaCapital / 100}%`;
+                               resultado2.innerHTML += `<b style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Perda do Capital/Mês: <b style="color: orange">${salarioMes / 100}%</b> </b>`;
+                               id_bar_mes.style.width = `${salarioMes / 100}%`;
 
     }
+
+    //var diaHrsTrabalho = Number(id_horas_dia.value * diasAfastados);
+    //var salarioHrs = (salario / diasMes) / diaHrsTrabalho;
 </script>
