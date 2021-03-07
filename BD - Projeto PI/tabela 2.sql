@@ -1,0 +1,32 @@
+create table sensortermoio2
+(idFuncionario int primary key, 
+Nome varchar(40), 
+Cargo varchar(40), 
+Horário_Entrada varchar(6), 
+Horário_Saida varchar(6),
+Km_do_trabalho varchar(10),
+Meio_de_transporte varchar(15),
+Temperatura_ºC int);
+select * from sensortermoio2;
+insert into sensortermoio2 values
+(1,'João de Macedo','Gerente de produção','9:00','18:00','7 Km','Carro',36.8),
+(2,'Roberto Nadini','Auxiliar de RH','8:20','17:20','12 Km','Carro',35.4),
+(3,'Luciana Pascoal','Assistente de contador','8:30','17:30','9 Km','Ônibus',36),
+(4,'Simão Dantas','Contador','9:00','18:00','6 Km','Carro',36.9),
+(5,'Aline Cordeiro','Auxiliar de RH','8:20','17:20','2 Km','A pé',35.8),
+(6,'Olívia Martins','Engenheira de alimentos','9:30','18:30','8 Km','Carro',35.7),
+(7,'Pedro Luciano','Gerente de vendas','8:00','17:00','10 Km','Ônibus',36.1),
+(8,'Osvaldo Prizzo','Açougueiro','7:30','16:30','5 Km','Carro',35),
+(9,'Adriana Ferreira','Açougueira','7:30','16:30','1,5 Km','A pé',37.2),
+(10,'Jonas Barbosa','Analista de compra de carnes','8:40','17:40','4 Km','Carro',40.3),
+(11,'Arthur Gonçalves','Engenheiro de automação','9:10','18:10','7 Km','Carro',37.1),
+(12,'Edson Lima','Gerente de vendas','8:00','17:00','8 Km','Ônibus',36.7),
+(13,'Rodrigo dos Santos','Açougueiro','7:30','16:30','6 Km','Carro',35.7),
+(14,'Rafael Gonzaga','Assistente de contador','8:30','17:30','2,5 Km','A pé',36.6),
+(15,'Marcio Dias','Contador','9:00','18:00','9 Km','Ônibus',37.2),
+(16,'Sandra Alves','Açougueira','7:30','16:30','12 Km','Ônibus',35.9),
+(17,'José Alencar','Auxiliar de RH','8:20','17:20','5 Km','Bicicleta',37),
+(18,'Silvia Rodrigues','Gerente de produção','9:00','18:00','15 Km','Carro',36.1),
+(19,'Maria Fernandes','Engenheira de produção','9:30','18:30','6 Km','Carro',38.3),
+(20,'Júlio Soares','Gerente de vendas','8:00','17:00','10 Km','Carro',39),
+(21,'Fernando Mota','Açougueiro','7:30','16:30','8 Km','Ônibus',37.9);
