@@ -9,17 +9,17 @@
 
 <body style="background-color: black;">
     <center>
-        <img src="../site/logo_termoio.jpeg">
+        <img src="https://i.imgur.com/Sb81suQ.jpg">
 
-    <div style="border: solid orange 2px; width: 500px; border-radius: 5px;">
+    <div style="border: solid orange 2px; width: 500px; border-radius: 5px; padding: 10px;">
 
-        <span style="color: white; font-size: 21px; font-family: Arial, Helvetica, sans-serif;">Insira o nome da empresa:</span> <input id="id_empresa" style="font-size: 20px; border-radius: 10px;"><br>
-        <span style="color: white; font-size: 20px;  font-family: Arial, Helvetica, sans-serif;">Quanto é o salário do funcionário?</span> <input id="id_salario" style="font-size: 20px; border-radius: 10px;"><br>
-        <span style="color: white; font-size: 20px;  font-family: Arial, Helvetica, sans-serif;">Quantas horas por dia o funcionário trabalha?</span> <input id="id_horas_dia" style="font-size: 20px; border-radius: 10px;"><br>
-        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias por mês ele trabalha?</span> <input id="id_dias_mes" style="font-size: 20px; border-radius: 10px;"><br>
-        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias ele fica afastado?</span> <input id="id_dias_afastados" style="font-size: 20px; border-radius: 10px;"><br>
+        <span style="color: white; font-size: 21px; font-family: Arial, Helvetica, sans-serif;">Insira o nome da empresa:</span> <input id="id_empresa" style="font-size: 20px; border-radius: 10px; border: none;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quanto é o salário do funcionário?</span> <input id="id_salario" style="font-size: 20px; border-radius: 10px; border: none;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantas horas por dia o funcionário trabalha?</span> <input id="id_horas_dia" style="font-size: 20px; border-radius: 10px; border: none;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias por mês ele trabalha?</span> <input id="id_dias_mes" style="font-size: 20px; border-radius: 10px; border: none;"><br>
+        <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Quantos dias ele fica afastado?</span> <input id="id_dias_afastados" style="font-size: 20px; border-radius: 10px; border: none;"><br>
         
-        <button style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; border: none;  border-radius: 10px; background-color: rgb(255, 166, 0);" onclick="calcular()">Analisar Perdas</button><br><br>
+        <button style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; border: none;  border-radius: 10px; background-color: rgb(255, 166, 0); margin: 10px;" onclick="calcular()">Analisar Perdas</button><br><br>
     
     </div>
 
@@ -63,9 +63,9 @@
         
         //Resultado apresentado na div
         resultado.innerHTML = `<span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Em relação aos dias de afastamento do funcionario, a empresa <b style="color: orange">${empresa}</b> perde
-                               <b style="color: orange">R$ ${salarioHrs}</b> em capital por dia, ou <b style="color: orange"> R$ ${salarioMes}</b> por mês.</span><br><br>
+                               <b style="color: orange">R$ ${salarioHrs}</b> em capital por dia, ou <b style="color: orange"> R$ ${salarioMes}</b> equivalente aos <b style="color: orange">${diasAfastados}</b> dias afastados.</span><br><br>
 
-                               <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Estimativa de contagio referente ao COVID-19:<br>
+                               <span style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Estimativa de contágio referente ao COVID-19:<br>
                                 Para <b style="color: orange">${diasAfastados}</b> dias que o funcionario trabalha, ele infecta <b style="color: orange">${mediaContagio}</b> pessoas.</span>
                                
                                <br><br>
@@ -74,7 +74,7 @@
                                //Barras de percentual
                                resultado.innerHTML += `<b style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Perda do Capital/Dia: <b style="color: orange">${calculoPerdaCapital / 100}%</b> </b><br>`;                      
                                id_bar_dia.style.width = `${calculoPerdaCapital / 100}%`;
-                               resultado2.innerHTML += `<b style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Perda do Capital/Mês: <b style="color: orange">${salarioMes / 100}%</b> </b>`;
+                               resultado2.innerHTML += `<b style="color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">Perda do Capital/Dias Afastados: <b style="color: orange">${salarioMes / 100}%</b> </b>`;
                                id_bar_mes.style.width = `${salarioMes / 100}%`;
 
     }
