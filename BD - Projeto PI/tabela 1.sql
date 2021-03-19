@@ -1,3 +1,5 @@
+create database seila;
+use seila;
 create table sensortermoio
 (idFuncionario int primary key, 
 Nome varchar(40), 
